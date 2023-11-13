@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block  content %}
+
+  <section id="hero" class="d-flex align-items-center justify-content-center">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+        <div class="col-xl-6 col-lg-8">
+          <h1>Powerful Digital Solutions With Gp<span>.</span></h1>
+          <h2>Register Now..!</h2>
+        </div>
+      </div>
+
+
+
+    </div>
+  </section>
+<section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Register</h2>
+            <div class="row mt-5">
+              <div class="col-lg-8 mt-5 mt-lg-6">
+
+
+
+            <form action="" method="post" role="form" class="">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-8 form-group php-email-form">
+                  <input type="text" name="username" class="form-control" id="username" placeholder="Username" required>
+                </div>
+                <div class="col-md-8 form-group mt-3 mt-md-4 php-email-form">
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                </div>
+                <div class="col-md-8 form-group mt-3 mt-md-4 php-email-form">
+                  <input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="Confirm Password" required>
+                </div>
+              </div>
+              <div class="php-email-form"><button type="submit">Submit</button></div>
+              </form>
+
+          </div>
+        </div>
+      </div>
+      </div>
+</section>
+{% for msg in messages %}
+  {{msg}}
+{% endfor %}
+
+{% endblock %}

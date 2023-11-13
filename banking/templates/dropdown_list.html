@@ -1,0 +1,6 @@
+{% load static %}
+
+
+{% for branch in branches %}
+<option value="{{ branch.pk }}">{{ branch.branch_name }}</option>
+{% endfor %}

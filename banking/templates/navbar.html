@@ -1,0 +1,22 @@
+
+<nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{% url 'bankapp:home' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+            {% if user.is_authenticated %}
+            <li><a class="nav-link scrollto">Hello, {{user.username}}</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'bankapp:logout' %}">Logout</a></li>
+            {% else %}
+          <li><a class="nav-link scrollto" href="{% url 'bankapp:login' %}">Login</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'bankapp:register' %}">Register</a></li>
+            {% endif %}
+          <li class="dropdown {% if 'bankapp' in request.path %} active {% endif %}"><a href="#"><span>Branches</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              {% for i in d_list %}
+              <li><a href="https://en.wikipedia.org/wiki/{{i.district_name}}">{{i.district_name}}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->

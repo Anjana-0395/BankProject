@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block  content %}
+
+  <section id="hero" class="d-flex align-items-center justify-content-center">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+        <div class="col-xl-6 col-lg-8">
+          <h1>Powerful Banking Solutions With YourBank<span>.</span></h1>
+
+        </div>
+      </div>
+
+
+
+    </div>
+  </section>
+<section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Details Form</h2>
+        </div>
+      </div>
+
+<!--            <div class="row mt-5">-->
+<!--              <div class="col-lg-6 mt-5 mt-lg-6">-->
+
+    <div class="container">
+        <div class="row">
+
+            <form action="" method="POST" id="memberForm" data-branches-url="{% url 'bankapp:load_branches' %}">
+              {% csrf_token %}
+              <div class="row">
+                   <div class="form-control">
+                        <div class="col-md-6 form-group ">
+                             {{ form.as_p }}
+                        </div>
+                       <div class="php-email-form">
+                           <button type="submit">Submit</button>
+                           <button type="submit"><a style="color:black;" href="{% url 'bankapp:logout' %}">Logout</a></button>
+                       </div>
+                   </div>
+              </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $("#id_district").change(function () {
+        const url = $("#memberForm").attr("data-branches-url");
+        const districtId = $(this).val();
+
+        $.ajax({
+            url: url,
+            data: {
+                'district_id': districtId
+            },
+            success: function (data) {
+                $("#id_branch").html(data);
+                      }
+        });
+
+    });
+</script>
+
+
+
+{% for msg in messages %}
+{{msg}}
+<p><a href="{% url 'bankapp:home' %}">Home</a></p>
+{% endfor %}
+
+{% endblock %}
